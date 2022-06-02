@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import Test from './Test';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  // TODO: Figure out what React.StrictMode is
   <React.StrictMode>
     <App />
   </React.StrictMode>
