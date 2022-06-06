@@ -1,10 +1,17 @@
-const FoodObject = (prop) => {
+import "./FoodObject.css"
+
+const FoodObject = (props) => {
     return(
+
         <div className="foodContainer">
-            <h2 className="display-4 text-light">{prop.title}</h2>
+            {/* <img src={"./"+prop.title + ".jpg"} alt={prop.title}/> */}
+            {/* <img src="images/tacos.jpg" alt={prop.title}/> */}
+
+            <img className="foodImage" src={"images/" + props.title + ".jpg"} alt={props.title}/>
+            <h2 className="foodTitle"></h2>
             <div>
-                <div className="text-light">{prop.summary}</div>
-                <div className="text-light">{prop.calCount}</div>
+                <div className="foodCount">{props.calCount}</div>
+                <div className="foodImage"><buttton>View</buttton><buttton>Delete</buttton></div>
             </div>
         </div>
     );

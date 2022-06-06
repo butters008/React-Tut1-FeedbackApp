@@ -1,0 +1,28 @@
+.foodContainer{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+    grid-template-rows: 2fr;
+    grid-template-areas:
+            "foodImage foodTitle foodCount foodOptions";
+    max-width: 80%;
+    max-height: 15vh;
+    
+}
+
+.foodImage{
+    grid: foodImage;
+    max-width: 5vw;
+    max-height: 5vh;
+}
+
+.foodTitle{
+    grid: foodTitle;
+}
+
+.foodCount{
+    grid: foodCount;
+}
+
+.foodOptions{
+    grid: foodOptions;
+}
