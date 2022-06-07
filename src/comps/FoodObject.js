@@ -4,15 +4,10 @@ const FoodObject = (props) => {
     return(
 
         <div className="foodContainer">
-            {/* <img src={"./"+prop.title + ".jpg"} alt={prop.title}/> */}
-            {/* <img src="images/tacos.jpg" alt={prop.title}/> */}
-
-            <img className="foodImage" src={"images/" + props.title + ".jpg"} alt={props.title}/>
-            <h2 className="foodTitle"></h2>
-            <div>
-                <div className="foodCount">{props.calCount}</div>
-                <div className="foodImage"><buttton>View</buttton><buttton>Delete</buttton></div>
-            </div>
+            <div className="foodImage"><img src={"images/" + props.title + ".jpg"} alt={props.title}/></div>
+            <div className="foodTitle"><h2>{props.title}</h2></div>
+            <div className="foodCount">{props.calCount}</div>
+            <div className="foodOptions"><button>View</button><button>Delete</button></div>
         </div>
     );
 }
