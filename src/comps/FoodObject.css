@@ -1,28 +1,51 @@
 .foodContainer{
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
     grid-template-rows: 2fr;
     grid-template-areas:
             "foodImage foodTitle foodCount foodOptions";
     max-width: 80%;
     max-height: 15vh;
+    margin: auto;
     
 }
 
 .foodImage{
     grid: foodImage;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}
+
+.foodImage img {
     max-width: 5vw;
     max-height: 5vh;
+    display: flex;
+    justify-content: center;
 }
 
 .foodTitle{
     grid: foodTitle;
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: center;
 }
 
 .foodCount{
     grid: foodCount;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
 }
 
 .foodOptions{
     grid: foodOptions;
+    background-color: chartreuse;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.foodOptions button{
+    height: 2vh;
 }

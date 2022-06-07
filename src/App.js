@@ -27,9 +27,7 @@ function App() {
       <FoodObject title={food[0].title} summary={food[0].summary} calCount={food[0].calCount}></FoodObject>
       <FoodObject title={food[1].title} summary={food[1].summary} calCount={food[1].calCount}></FoodObject>
       <FoodObject title={food[2].title} summary={food[2].summary} calCount={food[2].calCount}></FoodObject>
-      {/* <FoodObject {...food[0]}></FoodObject>
-      <FoodObject {...food[1]}></FoodObject>
-      <FoodObject {...food[2]}></FoodObject> */}
+
     </div>
   );
 }
