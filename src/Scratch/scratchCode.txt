@@ -1,3 +1,0 @@
-      {/* <FoodObject {...food[0]}></FoodObject>
-      <FoodObject {...food[1]}></FoodObject>
-      <FoodObject {...food[2]}></FoodObject> */}
