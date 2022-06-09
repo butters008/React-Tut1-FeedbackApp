@@ -115,3 +115,51 @@ const handleClick = () => {
 };
 
 <button onClick={handleClick}>Click</button>
+
+/* 
+// -------------------------------------------------------------------------------------------------------------------------
+Debugging the form, it is not working.
+*/ 
+
+import { useState } from "react";
+import Card from "./shared/Card";
+import Button from "./shared/Button";
+
+const FeedbackForm = () => {
+    const [text, setText] = useState('')
+    const [btnDisabled, setButtonDisabled] = useState()
+    const [message, setMessage] = useState('')
+
+    const handleTextChange = (e) => {
+        if(text === ''){
+            setButtonDisabled(true)
+            setMessage("Is this working")
+        }
+        else if(text !== '' && text.trim().length <= 10){
+            setButtonDisabled(true)
+            setMessage('Text must be at least 10 charaters')
+        }
+        else{
+            setButtonDisabled(false)
+            setMessage(null)
+        }
+        console.log(e.target.value)
+    }
+
+    return(
+        <Card>
+            <form>
+                <h2>How would you rate your service?</h2>
+                {/* @todo - rating select component */}
+                <div className="input-group">
+                    <input type='text' placeholder="Write a review" onChange={handleTextChange} value={text}/>
+                    <Button type="submit" version="secondary" isDisabled={btnDisabled} >Send</Button>
+                </div>
+            </form>
+
+            {message && <div className="message">{message}</div>}
+        </Card>
+    );
+}
+
+export default FeedbackForm;
