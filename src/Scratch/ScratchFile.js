@@ -91,3 +91,27 @@ const App = () => {
 }
 
 export default App;
+
+
+
+/* 
+// -------------------------------------------------------------------------------------------------------------------------
+Now that we are using states we no longer needed the code that we had placed inside the FeedbackItem comp
+*/ 
+
+const [rating, setRating] = useState(7);
+const [text, setText] = useState("This is sample text for the state");
+
+//This is how we are changing value
+const handleClick = () => {
+    //Hard coded
+    // setRating(10);
+
+    //Using the setRating with a function on the inside. 
+    setRating((prev) => {
+        console.log(prev);
+        return prev + 1;
+    })
+};
+
+<button onClick={handleClick}>Click</button>
