@@ -1,0 +1,11 @@
+-- Important Notes! --------------------------------------------------------------------------------
+
+So I spent at least an hour looking for a bug in the code and I found out that I was being stupid!
+Here are some IMPORTANT and SIMPLE things to look for
+
+  1) In your function, do you have a return();
+  2) Do you have a export default 'functionName/CompName'
+  3) Are you calling the Component in upper Component or App.js
+
+
+
