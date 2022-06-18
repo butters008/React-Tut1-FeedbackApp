@@ -3,11 +3,16 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 import PropTypes from 'prop-types'
 import Card from "./shared/Card";
+//for the context 
+import {useContext} from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 
-const FeedbackItem = ({item, handleDelete}) => {
+const FeedbackItem = ({item}) => {
     // const handleClick = (id) => {
     //     console.log(id);
     // }
+
+    const {deleteFeedback} = useContext(FeedbackContext)
 
     
     return (
@@ -17,7 +22,7 @@ const FeedbackItem = ({item, handleDelete}) => {
             {/* <button className="close" onClick={handleClick}> */}
 
             {/* This is an example of function being declared and run on the onClick */}
-            <button className="close" onClick={() => handleDelete(item.id)}>
+            <button className="close" onClick={() => deleteFeedback(item.id)}>
                 <FaTimes color='purple'/>
             </button>
             <div className="text-display">{item.text}</div>

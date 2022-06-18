@@ -1,15 +1,14 @@
-import {useState} from 'react';
-import { v4 as uuid4} from 'uuid';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Header from './components/Header';
 import FeedbackList from './components/FeedbackList';
-import FeedbackData from './data/FeedbackData';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import AboutPage from './pages/AboutPage';
 import AboutIconLink from './components/AboutIconLink';
+import {FeedbackProvider} from './context/FeedbackContext'
 //This is for example only, not really relavant in current project scope
 import Post from './components/Post';
+
 
 
 /*
@@ -19,36 +18,6 @@ Also, we would than go and replace Link with NavLink, so it would like this
 */
 
 const App = () => {
-
-/* 
-This is grabbing data from data/FeedBackData.js and we are using a state to send in data 
-to the list so the list can display all the data objects that are stored.  
-  -> This will be converted to something better later on 
-*/
-const [feedback, setFeedback] = useState(FeedbackData)
-
-const addFeedback = (newFeedback) => {
-  newFeedback.id = uuid4()
-  /* 
-  the ... is a spread operator, and you will be putting everything that is in the array of feeback and 
-  we are going to make a copy of it to put into the new array
-  */
-  setFeedback([newFeedback, ...feedback])
-  console.log(newFeedback)
-
-
-}
-
-// This handle even is being passed from the item, to the list, to here and we are making sure
-//That the user wants to delete first than we are deleting and modifying the list with the state
-//That is define above
-const deleteFeedback = (id) => {
-  if(window.confirm("Are you sure you want to delete this?")){
-    setFeedback(feedback.filter((item) => item.id !== id))
-  }
-
-}
-
   return (
     /* 
     To explain what went on and why I need to explain this, I know I will forget the pain.  So for React DOM 6+, it changed
@@ -61,6 +30,7 @@ const deleteFeedback = (id) => {
     -For the main body since its multiple comps, it all needs to go inside the the one <Route> as one element={}
 
     */
+  <FeedbackProvider>
     <Router>
       <Header/>
       <div className="container">
@@ -69,9 +39,9 @@ const deleteFeedback = (id) => {
             exact path="/"
             element={
               <>
-                <FeedbackForm handleAdd={addFeedback}></FeedbackForm>
-                <FeedbackStats feedback={feedback}/>
-                <FeedbackList feedback={feedback} handleDelete={deleteFeedback}></FeedbackList>
+                <FeedbackForm></FeedbackForm>
+                <FeedbackStats />
+                <FeedbackList></FeedbackList>
               </>  
             }
           >
@@ -86,7 +56,7 @@ const deleteFeedback = (id) => {
       <AboutIconLink/>
 
     </Router>
-
+  </FeedbackProvider>
 );
 }
 
