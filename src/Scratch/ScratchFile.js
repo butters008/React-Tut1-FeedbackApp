@@ -162,4 +162,48 @@ const FeedbackForm = () => {
     );
 }
 
-// export default FeedbackForm;
+// export default FeedbackForm
+
+//------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+//SECTION 6 PURGE!
+
+
+//FeedbackList
+import PropTypes from 'prop-types';
+
+//We dont need this because of context - moving to scratch
+// I dont know why but it says in my VSCode that I am not using proptype import but I am
+FeedbackList.propTypes = {
+    feedback: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            text: PropTypes.string.isRequired,
+            rating: PropTypes.number.isRequired,
+        })
+    )
+
+}
+
+//App.js
+//Modified this by taking out feedback
+<FeedbackList feedback={feedback} handleDelete={deleteFeedback}></FeedbackList>
+
+//moved this into context file from App.js
+  // This handle even is being passed from the item, to the list, to here and we are making sure
+  //That the user wants to delete first than we are deleting and modifying the list with the state
+  //That is define above
+  const deleteFeedback = (id) => {
+    if(window.confirm("Are you sure you want to delete this?")){
+      setFeedback(feedback.filter((item) => item.id !== id))
+    }
+  }
+
+//Got rid of this state since this moved to context
+  /* 
+This is grabbing data from data/FeedBackData.js and we are using a state to send in data 
+to the list so the list can display all the data objects that are stored.  
+  -> This will be converted to something better later on 
+*/
+const [feedback, setFeedback] = useState(FeedbackData)
