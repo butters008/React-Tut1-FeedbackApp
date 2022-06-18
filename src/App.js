@@ -7,6 +7,16 @@ import FeedbackData from './data/FeedbackData';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import AboutPage from './pages/AboutPage';
+import AboutIconLink from './components/AboutIconLink';
+//This is for example only, not really relavant in current project scope
+import Post from './components/Post';
+
+
+/*
+We could do <NavLink> which we would import from 'react-router-dom' and we would add it in the {} with all the others
+Also, we would than go and replace Link with NavLink, so it would like this
+<NavLink to={{pathname: 'path to page'} activeClassName="Name on CSS File"}>Text for Link</NavLink>
+*/
 
 const App = () => {
 
@@ -67,8 +77,14 @@ const deleteFeedback = (id) => {
           >
           </Route>
           <Route path="/about" element={<AboutPage/>}/>
+          {/* You will have to mannualy type /post/{whatever id you want to pass} you can also send over multiple */}
+          <Route path="/post/:id/:name" element={<Post/>}/>
+          {/* Exmaple of sending over just the ID */}
+          {/* <Route path="/post/:id" element={<Post/>}/> */}
         </Routes>
       </div>  
+      <AboutIconLink/>
+
     </Router>
 
 );
