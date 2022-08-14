@@ -1,11 +1,13 @@
-import { useState} from 'react'
+import { useState } from 'react'
 import Card from './shared/Card'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
 //for the context
-import {useContext} from 'react'
+import {useContext} from 'react' //I know I can combine these into one line, for now its better to split for learning
 import FeedbackContext from '../context/FeedbackContext'
-
+//This is for FeebackEdit 
+import {udeEffect} from 'react' //I know I can combine these into one line, for now its better to split for learning
+import { useEffect } from 'react'
 
 //Got rid of {handleAdd} because of context
 function FeedbackForm() {
@@ -14,7 +16,16 @@ function FeedbackForm() {
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [message, setMessage] = useState('')
 
-    const {addFeedback} = useContext(FeedbackContext)
+    const {addFeedback, feedbackEdit} = useContext(FeedbackContext)
+
+    useEffect(() => {
+        console.log("Hello from feedbackForm useEffect")
+        if(feedbackEdit.edit === true){
+            setBtnDisabled(false)
+            setText(feedbackEdit.item.text)
+            setRating(feedbackEdit.item.rating)
+        }
+    }, [feedbackEdit])
 
     const handleTextChange = ({ target: { value } }) => { 
         if (value === '') {

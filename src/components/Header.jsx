@@ -9,9 +9,8 @@ const Header = ({text}) => {
     //   This is how you do inline CSS in JSX files
     // <header style={{backgroundColor: 'orange', color: 'black'}}>
     <header style={headerStyle}>
-        <div className='container'></div>
+        <div className='container'><h2>{text}</h2></div>
         {/* <h2>{props.text}</h2> */}
-        <h2>{text}</h2>
     </header>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaEdit } from "react-icons/fa";
 import PropTypes from 'prop-types'
 import Card from "./shared/Card";
 //for the context 
@@ -12,7 +12,7 @@ const FeedbackItem = ({item}) => {
     //     console.log(id);
     // }
 
-    const {deleteFeedback} = useContext(FeedbackContext)
+    const {deleteFeedback, editFeedback} = useContext(FeedbackContext)
 
     
     return (
@@ -24,6 +24,9 @@ const FeedbackItem = ({item}) => {
             {/* This is an example of function being declared and run on the onClick */}
             <button className="close" onClick={() => deleteFeedback(item.id)}>
                 <FaTimes color='purple'/>
+            </button>
+            <button className="edit" onClick={() => editFeedback(item)}>
+                <FaEdit color="purple"/>
             </button>
             <div className="text-display">{item.text}</div>
         </Card>

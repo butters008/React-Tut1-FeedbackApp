@@ -10,7 +10,21 @@ export const FeedbackProvider = ({children}) => {
       text: 'This item is from context',
       rating: 10,
     },
+    {
+      id: 2,
+      text: 'Feedback Item 2',
+      rating: 7,
+    },
+    {
+      id: 3,
+      text: 'Feeback Item 3',
+      rating: 8,
+    },
   ])
+  const [feedbackEdit, setFeedbackEdit] = useState({
+    item: {},
+    edit: false
+  })
 
   //Functions
   /* This handle even is being passed from the item, to the list, to here and we are making sure
@@ -31,13 +45,21 @@ export const FeedbackProvider = ({children}) => {
     setFeedback([newFeedback, ...feedback])
     console.log(newFeedback)
   }
+
+  const editFeedback = (item) => {
+    setFeedbackEdit({
+      item,
+      edit: true
+    })
+  }
   
   return(
     <FeedbackContext.Provider value={{
       feedback,
       deleteFeedback,
       addFeedback,
-
+      editFeedback,
+      feedbackEdit
     }}>
       {children}
     </FeedbackContext.Provider>
