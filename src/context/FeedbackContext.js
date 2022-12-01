@@ -52,14 +52,32 @@ export const FeedbackProvider = ({children}) => {
       edit: true
     })
   }
+
+  const updateFeedback = (id, updItem) => {
+    console.log(id, updItem)
+    setFeedback(feedback.map(
+      (item) => item.id === id ? {
+        ...item, ...updItem
+      } : item))
+    // NOTE: no need to spread data and item
+    // setFeedback(feedback.map((item) => (item.id === id ? data : item)))
+
+    // FIX: this fixes being able to add a feedback after editing
+    // credit to Jose https://www.udemy.com/course/react-front-to-back-2022/learn/lecture/29768200#questions/16462688
+    setFeedbackEdit({
+      item: {},
+      edit: false,
+    })
+  }
   
   return(
     <FeedbackContext.Provider value={{
       feedback,
+      feedbackEdit,
       deleteFeedback,
       addFeedback,
       editFeedback,
-      feedbackEdit
+      updateFeedback
     }}>
       {children}
     </FeedbackContext.Provider>

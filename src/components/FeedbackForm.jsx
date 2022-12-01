@@ -6,8 +6,7 @@ import RatingSelect from './RatingSelect'
 import {useContext} from 'react' //I know I can combine these into one line, for now its better to split for learning
 import FeedbackContext from '../context/FeedbackContext'
 //This is for FeebackEdit 
-import {udeEffect} from 'react' //I know I can combine these into one line, for now its better to split for learning
-import { useEffect } from 'react'
+import {useEffect} from 'react' //I know I can combine these into one line, for now its better to split for learning
 
 //Got rid of {handleAdd} because of context
 function FeedbackForm() {
@@ -16,7 +15,7 @@ function FeedbackForm() {
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [message, setMessage] = useState('')
 
-    const {addFeedback, feedbackEdit} = useContext(FeedbackContext)
+    const {addFeedback, feedbackEdit, updateFeedback} = useContext(FeedbackContext)
 
     useEffect(() => {
         console.log("Hello from feedbackForm useEffect")
@@ -49,7 +48,12 @@ function FeedbackForm() {
             text,
             rating,
             }
-
+        if(feedbackEdit.edit === true){
+            updateFeedback(feedbackEdit.item.id, newFeedback)
+        } 
+        else{
+            addFeedback(newFeedback)
+        }
         addFeedback(newFeedback)
         setBtnDisabled(true) 
         setRating(10) 
